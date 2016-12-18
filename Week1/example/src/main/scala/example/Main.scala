@@ -21,8 +21,16 @@ object Main extends App {
 
   val y = Factorial.tailRecursiveFactorial(9)
   println("Factorial y = " + y)
-  
-  val time1 = time{Factorial.factorial(1111)}
-  val time2 = time{Factorial.tailRecursiveFactorial(1111)}
+
+  val time1 = time { Factorial.factorial(2) }
+  val time2 = time { Factorial.tailRecursiveFactorial(2) }
+
+  def countChange(money: Int, coins: List[Int]): Int = {
+    if (money < 0 || coins.isEmpty) 0
+    // we recurse over money by reducing it. When we get exact 0, we have successfully made full change. Hence return 1 as we count this attempt
+    else if (money == 0) 1 
+    else countChange(money - coins.head, coins) + countChange(money, coins.tail)
+  }
+  println("Count change = "+countChange(100, List(1,2)))
 
 }
