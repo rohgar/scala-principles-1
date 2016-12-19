@@ -14,7 +14,7 @@ class A {
   
 }
 
-trait Colorful (x:A) {
+trait Colorful {
   def print(x: Int): String
   def color = "Blue"
   val color2 = "Red"
