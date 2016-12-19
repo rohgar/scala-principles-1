@@ -32,5 +32,9 @@ object Main extends App {
     else countChange(money - coins.head, coins) + countChange(money, coins.tail)
   }
   println("Count change = "+countChange(100, List(1,2)))
+  
+  example.Foo.print
+  
+  
 
 }
