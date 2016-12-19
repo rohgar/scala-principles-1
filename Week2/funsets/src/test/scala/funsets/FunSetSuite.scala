@@ -77,6 +77,7 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    val s4 = singletonSet(1)
   }
 
   /**
@@ -109,6 +110,31 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "Union 3")
     }
   }
-
+  
+  test("intersection contains all common elements between both sets") {
+    new TestSets {
+      val s = intersect(s1, s4)
+      assert(contains(s, 1), "Intersect")
+    }
+  }
+    
+  test("diff(s,t) is set of all elements present in s but not t") {
+    new TestSets {
+      val s = diff(s1, s2)
+      assert(contains(s, 1), "Intersect 1")
+      assert(!contains(s, 2), "Intersect 2")
+    }
+  }
+   
+  test("filter returns the subset of `s` for which given predicate `p` holds.") {
+    new TestSets {
+      val a = filter(s1, (x: Int) => (x == 1))
+      assert(contains(a, 1), "Filter 1") // a should contain 1, as it is present in s1 and matches predicate
+      val b = filter(s1, (x: Int) => (x == 2))
+      assert(!contains(b, 2), "Filter 2") // b should not contain 2 as its not present of s1 even though it matches predicate
+      val c = filter(s2, (x: Int) => (x == 1)) 
+      assert(!contains(c, 2), "Filter 2") // b should not contain 2 as it is present s2 but it does not match the predicate
+    }
+  }
 
 }
