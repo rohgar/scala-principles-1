@@ -32,5 +32,11 @@ object PlayTest {
   }                                               //> countryOfCapital  : scala.collection.immutable.Map[String,String] = Map(Was
                                                   //| hington -> US, Bern -> Switzerland)
                                                   
+  val t = List("Every", "student", "likes", "Scala").groupBy((arg)=>arg.length)
+                                                  //> t  : scala.collection.immutable.Map[Int,List[String]] = Map(5 -> List(Every
+                                                  //| , likes, Scala), 7 -> List(student))
+  val tval = t.get(3)                             //> tval  : Option[List[String]] = None
+	
+                                                  
 
 }
