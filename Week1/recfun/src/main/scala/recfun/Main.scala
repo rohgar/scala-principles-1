@@ -45,9 +45,11 @@ object Main {
    * Reference: http://stackoverflow.com/questions/12629721/coin-change-algorithm-in-scala-using-recursion
    */
   def countChange(money: Int, coins: List[Int]): Int = {
-    if (money < 0 || coins.isEmpty) 0
     // we recurse over money by reducing it. When we get exact 0, we have successfully made full change. Hence return 1 as we count this attempt
-    else if (money == 0) 1 
+    // Also sequence here matters.
+    if (money < 0) 0
+    else if (money == 0) 1
+    else if (coins.isEmpty) 0
     else countChange(money - coins.head, coins) + countChange(money, coins.tail)
   }
   
